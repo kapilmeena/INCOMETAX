@@ -21,6 +21,7 @@ namespace INCOMETAX.Controllers
         {
             return View();
         }
+        [HttpPost]
         public ActionResult RegisterSuperAdmin(UserModel reg)
         {
             using (var db = new DataBaseDataContext())
@@ -39,6 +40,8 @@ namespace INCOMETAX.Controllers
                     user.Address = reg.Address;
                     db.USERs.InsertOnSubmit(user);
                     db.SubmitChanges();
+
+                    return RedirectToAction("SuperAdminLogin", "Login");
                 }
                 catch (Exception ex) { }
 
@@ -55,6 +58,8 @@ namespace INCOMETAX.Controllers
         {
             return View();
         }
+
+        [HttpPost]
         public ActionResult RegisterAdmin(UserModel reg)
         {
             using (var db = new DataBaseDataContext())
@@ -73,6 +78,7 @@ namespace INCOMETAX.Controllers
                     user.Address = reg.Address;
                     db.USERs.InsertOnSubmit(user);
                     db.SubmitChanges();
+                    return RedirectToAction("AdminLogin", "Login");
                 }
                 catch (Exception ex) { }
 
@@ -89,6 +95,7 @@ namespace INCOMETAX.Controllers
         {
             return View();
         }
+        [HttpPost]
         public ActionResult RegisterOfficer(UserModel reg)
         {
 
@@ -108,6 +115,7 @@ namespace INCOMETAX.Controllers
                     user.Address = reg.Address;
                     db.USERs.InsertOnSubmit(user);
                     db.SubmitChanges();
+                    return RedirectToAction("OfficerLogin", "Login");
                 }
                 catch (Exception ex) { }
 
