@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using INCOMETAX.Models;
 using INCOMETAX.DbModel;
+using System.Web.Security;
 
 namespace INCOMETAX.Controllers
 {
@@ -29,7 +30,14 @@ namespace INCOMETAX.Controllers
                 {
                     Session["username"] = user.UserName;
                     Session["userid"] = user.ID;
-                    return RedirectToAction("Officer", "Dashboard");
+                    Session["Role"] = user.RollId;
+                    FormsAuthentication.SetAuthCookie(user.Email, false);
+
+                    var authTicket = new FormsAuthenticationTicket(1, user.Email, DateTime.Now, DateTime.Now.AddMinutes(20), false, Convert.ToString(user.RollId));
+                    string encryptedTicket = FormsAuthentication.Encrypt(authTicket);
+                    var authCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);
+                    HttpContext.Response.Cookies.Add(authCookie);
+                    return RedirectToAction("index", "Dashboard");
                 }
 
             }
@@ -50,7 +58,13 @@ namespace INCOMETAX.Controllers
                 {
                     Session["username"] = user.UserName;
                     Session["userid"] = user.ID;
-                    return RedirectToAction("Admin", "Dashboard");
+                    FormsAuthentication.SetAuthCookie(user.Email, false);
+
+                    var authTicket = new FormsAuthenticationTicket(1, user.Email, DateTime.Now, DateTime.Now.AddMinutes(20), false, Convert.ToString(user.RollId));
+                    string encryptedTicket = FormsAuthentication.Encrypt(authTicket);
+                    var authCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);
+                    HttpContext.Response.Cookies.Add(authCookie);
+                    return RedirectToAction("index", "Dashboard");
                 }
 
             }
@@ -71,7 +85,13 @@ namespace INCOMETAX.Controllers
                 {
                     Session["username"] = user.UserName;
                     Session["userid"] = user.ID;
-                    return RedirectToAction("SuperAdmin", "Dashboard");
+                    FormsAuthentication.SetAuthCookie(user.Email, false);
+
+                    var authTicket = new FormsAuthenticationTicket(1, user.Email, DateTime.Now, DateTime.Now.AddMinutes(20), false, Convert.ToString(user.RollId));
+                    string encryptedTicket = FormsAuthentication.Encrypt(authTicket);
+                    var authCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);
+                    HttpContext.Response.Cookies.Add(authCookie);
+                    return RedirectToAction("index", "Dashboard");
                 }
 
             }
@@ -110,6 +130,8 @@ namespace INCOMETAX.Controllers
         public ActionResult Logout()
         {
             Session.Abandon();
+
+            FormsAuthentication.SignOut();
             return RedirectToAction( "index", "home");
         }
     }

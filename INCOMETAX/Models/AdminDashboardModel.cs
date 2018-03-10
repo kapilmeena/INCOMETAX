@@ -6,8 +6,13 @@ using INCOMETAX.Models;
 
 namespace INCOMETAX.Models
 {
-    public class AdminDashboardModel
+    public class SuperAdminDashboard
     {
         public List<FileDetailModel> AllFiles { get; set; }
+        public List<UserModel> AllOfficerList { get; set; }
+        public List<UserModel> AllOperator { get; set; }
+
     }
+   
+
 }
