@@ -1,0 +1,48 @@
+﻿@model INCOMETAX.Models.FileDetailModel
+
+@{
+    ViewBag.Title = "AddNEWFile";
+    Layout = "~/Views/Shared/_IncomeTaxLayout.cshtml";
+}
+<div class="row">
+    <div class="col-md-10">
+
+        <div class="card">
+            <div class="header">
+                <div class="title">Add File Details</div>
+            </div>
+
+
+            <div class="content">
+                @using (Html.BeginForm("AddNewFile", "File", FormMethod.Post, new { @Class = "" }))
+
+            {
+                    <div class="form-group">
+                        <label>FileName:</label> @Html.TextBoxFor(m => m.FILE_NAME,new {@class="form-control"} )<br />
+                        <label> Number of DAys:</label>@Html.TextBoxFor(m => m.COMPLETE_IN_DAYS, new { @class = "form-control", @type = "number" })<br />
+                        <label>  Staff:</label> @Html.DropDownListFor(m => m.ASSIGN_STAFF_ID, new SelectList(ViewBag.Staffs, "ID", "FirstName"), "Select ", new { @class = "form-control" })<br />
+                        <button type="submit" class="btn btn-lg btn-success"> Submit</button>
+                    </div>
+
+                }
+            </div>
+        </div>
+    </div>
+    <Script>
+        //$(Document).ready(
+        //     function () {
+        //         { swal('SUCCESS', 'This is success message', 'success') }
+
+
+        //     })
+       
+      
+    </Script>
+       
+
+   
+</div>
+
+
+
+
