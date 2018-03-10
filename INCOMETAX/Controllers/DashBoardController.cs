@@ -5,11 +5,39 @@ using System.Web;
 using System.Web.Mvc;
 using INCOMETAX.Models;
 using INCOMETAX.DbModel;
+using INCOMETAX.Models;
 
 namespace INCOMETAX.Controllers
 {
     public class DashBoardController : Controller
     {
+        Business _buss = new Business();
+        [Authorize(Roles ="1,2,3")]
+        public ActionResult index()
+        {
+            if (Convert.ToInt32(Session["Role"]) == 1)
+            {
+                ViewBag.allFiles = _buss.getAllFilesList();
+
+
+
+            }
+            if (Convert.ToInt32(Session["Role"]) == 2)
+            {
+            }
+            if (Convert.ToInt32(Session["Role"]) == 3)
+            {
+            }
+
+
+
+
+                return View();
+        }
+
+
+
+
         // GET: DashBoard
         public ActionResult Staff()
         {
@@ -17,7 +45,7 @@ namespace INCOMETAX.Controllers
         }
         public ActionResult Admin()
         {
-            var dashbordModel = new AdminDashboardModel();
+            var dashbordModel = new SuperAdminDashboard();
             using (var db = new DataBaseDataContext())
             {
                 try

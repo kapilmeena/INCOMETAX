@@ -14,6 +14,12 @@ namespace INCOMETAX
             warning,
             info
         }
+        public enum Rolls
+        {
+            SuperAdmin=1,
+            Admin=2,
+            Officer=3
+        }
 
     }
 }
