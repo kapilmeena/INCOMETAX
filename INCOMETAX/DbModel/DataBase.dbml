@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="INCOMETAX" Class="DataBaseDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Data Source=ZARVIS\SQLEXPRESS;Initial Catalog=INCOMETAX;User ID=sa" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="INCOMETAXConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="WebSettings" ConnectionString="Data Source=den1.mssql3.gear.host;Initial Catalog=incometax;Persist Security Info=True;User ID=incometax" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="INCOMETAXConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.[USER]" Member="USERs">
     <Type Name="USER">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />

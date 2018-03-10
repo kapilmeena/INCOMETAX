@@ -23,10 +23,10 @@
                                     grid.Column("File Name", "", format: @<text><span class="v-align-middle semi-bold">@item.FILE_NAME</span></text>),
                                     grid.Column("Time", "", format: @<text><span class="v-align-middle"> @item.COMPLETE_IN_DAYS</span></text>),
                                     grid.Column("Created on", "", format: @<text><span class="v-align-middle">@item.CREATED_DATE.ToString("dd/MM/yyyy")</span></text>),
-                                    grid.Column("Completed", "", format: @<text><label class="switch"><input type="checkbox" checked="@item.IS_COMPLETED"><span class="slider round"></span> </label></text>),
-                                    grid.Column("Pending", "", format: @<text><label class="switch"><input type="checkbox" checked="@item.IS_PENDING"><span class="slider round"></span></label></text>),
+                                    grid.Column("Completed", "", format: @<text><label class="switch"><input type="checkbox"><span class="slider round">@item.IS_COMPLETED</span> </label></text>),
+                                    grid.Column("Pending", "", format: @<text><label class="switch"><input type="checkbox"><span class="slider round">@item.IS_PENDING</span></label></text>),
 
-                                    grid.Column("Assigned", "", format: @<text><label class="switch"><input type="checkbox" checked="@item.IS_ASSIGN"><span class="slider round"></span></label></text>),
+                                    grid.Column("Assigned", "", format: @<text><label class="switch"><input type="checkbox"><span class="slider round">@item.IS_ASSIGN</span></label></text>),
 
                                 grid.Column("", "ACTION", format: @<text>
                                     <div class="btn-group sm-m-t-10">
