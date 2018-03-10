@@ -219,6 +219,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\OfficerController.cs" />
     <Compile Include="Controllers\SweetController.cs" />
+    <Compile Include="Controllers\UserRegisterController.cs" />
     <Compile Include="DbModel\DataBase.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -528,6 +529,9 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\UserRegister\RegisterAdmin.cshtml" />
+    <Content Include="Views\UserRegister\RegisterSuperAdmin.cshtml" />
+    <Content Include="Views\UserRegister\RegisterOfficer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

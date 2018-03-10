@@ -29,7 +29,6 @@ namespace INCOMETAX.Models
     public class UserModel
     {
         public int ID { get; set; }
-        [Required]
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
@@ -37,8 +36,8 @@ namespace INCOMETAX.Models
         public string Password { get; set; }
         public string CPassword { get; set; }
         public String MobileNo { get; set; }
-
-
+        public String RollId{ get; set; }
+        public String Address { get; set; }
 
     }
 }
