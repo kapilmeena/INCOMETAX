@@ -218,7 +218,6 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\OfficerController.cs" />
-    <Compile Include="Controllers\SuperAdminController.cs" />
     <Compile Include="Controllers\SweetController.cs" />
     <Compile Include="DbModel\DataBase.designer.cs">
       <AutoGen>True</AutoGen>
@@ -238,7 +237,6 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\StaffDashboardModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RollEnums.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -536,7 +534,6 @@
     <Folder Include="Content\Resource\images\faces\faces\" />
     <Folder Include="Content\Resource\sass\" />
     <Folder Include="Views\Base\" />
-    <Folder Include="Views\SuperAdmin\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

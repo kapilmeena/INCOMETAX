@@ -26,7 +26,7 @@
                                      grid.Column("Completed", "", format: @<text><label class="switch"><input type="checkbox" checked="@item.IS_COMPLETED"><span class="slider round"></span></label></text>),
                                      //grid.Column("Pending", "", format: @<text><span class="v-align-middle">@item.IS_PENDING</span></text>),
                                      //grid.Column("Assigned", "", format: @<text><span class="v-align-middle">@item.IS_ASSIGN</span></text>)
-                                     @*grid.Column("Assigned", "", format: @<text><label class="switch"><input type="checkbox" checked="@item.IS_PENDING" disabled="true"/><span class="slider round"></span></label></text>)*@
+                                     grid.Column("Assigned", "", format: @<text><label class="switch"><input type="checkbox" checked="@item.IS_PENDING"/><span class="slider round"></span></label></text>)
                                      @*grid.Column("IsActive", "Active", style: "sixtypx", format: @<text><input name="Prints" readonly="true" type="checkbox" data-init-plugin="switchery" class="switchery small" checked="@item.IsActive" /></text>),*@
                                     @*grid.Column("", "ACTION", format: @<text>
                                         <div class="btn-group sm-m-t-10">
@@ -36,6 +36,7 @@
                                             <a href="@Url.Action("DeleteFile", "File", new {fileid = item.FILE_ID}, null)" onclick="return deletealert(this, event);" class="btn btn-default">
                                                 <i class="fa fa-trash-o"></i>
                                             </a>
+
                                         </div></text>))*@
     )
                         )
