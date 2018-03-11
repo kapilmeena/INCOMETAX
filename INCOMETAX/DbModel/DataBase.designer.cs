@@ -36,6 +36,9 @@ namespace INCOMETAX.DbModel
     partial void InsertUSER(USER instance);
     partial void UpdateUSER(USER instance);
     partial void DeleteUSER(USER instance);
+    partial void InsertMESSAGE_DETAIL(MESSAGE_DETAIL instance);
+    partial void UpdateMESSAGE_DETAIL(MESSAGE_DETAIL instance);
+    partial void DeleteMESSAGE_DETAIL(MESSAGE_DETAIL instance);
     #endregion
 		
 		public DataBaseDataContext() : 
@@ -81,6 +84,14 @@ namespace INCOMETAX.DbModel
 			get
 			{
 				return this.GetTable<USER>();
+			}
+		}
+		
+		public System.Data.Linq.Table<MESSAGE_DETAIL> MESSAGE_DETAILs
+		{
+			get
+			{
+				return this.GetTable<MESSAGE_DETAIL>();
 			}
 		}
 	}
@@ -640,6 +651,164 @@ namespace INCOMETAX.DbModel
 					this._Address = value;
 					this.SendPropertyChanged("Address");
 					this.OnAddressChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.MESSAGE_DETAILS")]
+	public partial class MESSAGE_DETAIL : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _MID;
+		
+		private string _TEXT;
+		
+		private System.Nullable<int> _SENDERID;
+		
+		private System.Nullable<int> _RECIVERID;
+		
+		private System.Nullable<System.DateTime> _CREATEDDATE;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnMIDChanging(int value);
+    partial void OnMIDChanged();
+    partial void OnTEXTChanging(string value);
+    partial void OnTEXTChanged();
+    partial void OnSENDERIDChanging(System.Nullable<int> value);
+    partial void OnSENDERIDChanged();
+    partial void OnRECIVERIDChanging(System.Nullable<int> value);
+    partial void OnRECIVERIDChanged();
+    partial void OnCREATEDDATEChanging(System.Nullable<System.DateTime> value);
+    partial void OnCREATEDDATEChanged();
+    #endregion
+		
+		public MESSAGE_DETAIL()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int MID
+		{
+			get
+			{
+				return this._MID;
+			}
+			set
+			{
+				if ((this._MID != value))
+				{
+					this.OnMIDChanging(value);
+					this.SendPropertyChanging();
+					this._MID = value;
+					this.SendPropertyChanged("MID");
+					this.OnMIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TEXT", DbType="VarChar(100)")]
+		public string TEXT
+		{
+			get
+			{
+				return this._TEXT;
+			}
+			set
+			{
+				if ((this._TEXT != value))
+				{
+					this.OnTEXTChanging(value);
+					this.SendPropertyChanging();
+					this._TEXT = value;
+					this.SendPropertyChanged("TEXT");
+					this.OnTEXTChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SENDERID", DbType="Int")]
+		public System.Nullable<int> SENDERID
+		{
+			get
+			{
+				return this._SENDERID;
+			}
+			set
+			{
+				if ((this._SENDERID != value))
+				{
+					this.OnSENDERIDChanging(value);
+					this.SendPropertyChanging();
+					this._SENDERID = value;
+					this.SendPropertyChanged("SENDERID");
+					this.OnSENDERIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RECIVERID", DbType="Int")]
+		public System.Nullable<int> RECIVERID
+		{
+			get
+			{
+				return this._RECIVERID;
+			}
+			set
+			{
+				if ((this._RECIVERID != value))
+				{
+					this.OnRECIVERIDChanging(value);
+					this.SendPropertyChanging();
+					this._RECIVERID = value;
+					this.SendPropertyChanged("RECIVERID");
+					this.OnRECIVERIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CREATEDDATE", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CREATEDDATE
+		{
+			get
+			{
+				return this._CREATEDDATE;
+			}
+			set
+			{
+				if ((this._CREATEDDATE != value))
+				{
+					this.OnCREATEDDATEChanging(value);
+					this.SendPropertyChanging();
+					this._CREATEDDATE = value;
+					this.SendPropertyChanged("CREATEDDATE");
+					this.OnCREATEDDATEChanged();
 				}
 			}
 		}

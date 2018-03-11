@@ -13,6 +13,7 @@ namespace INCOMETAX.Controllers
     public class FileController : BaseController
     {
         // GET: File
+        Business _buss = new Business();
         public ActionResult Index()
         {
             return View();
@@ -21,7 +22,7 @@ namespace INCOMETAX.Controllers
         {
             using (var db = new DataBaseDataContext())
             {
-                ViewBag.Staffs = (from u in db.USERs where u.RollId==2 select u).ToList();
+                ViewBag.Staffs = (from u in db.USERs where u.RollId==3 select u).ToList();
 
             }
             return View();
@@ -44,6 +45,8 @@ namespace INCOMETAX.Controllers
                             newfile.ASSIGN_DATE = DateTime.Now;
                             newfile.DEADLINE_DATE = DateTime.Now.AddDays(Convert.ToDouble(file.COMPLETE_IN_DAYS));
                             newfile.IS_ASSIGN = true;
+                           _buss.SendFileAssignedMessage((int)file.ASSIGN_STAFF_ID, file.FILE_NAME);
+
                         }
                         newfile.CREATED_DATE = DateTime.Now;
                         newfile.COMPLETE_IN_DAYS = file.COMPLETE_IN_DAYS;
@@ -65,6 +68,7 @@ namespace INCOMETAX.Controllers
                             newfile.ASSIGN_DATE = DateTime.Now;
                             newfile.DEADLINE_DATE = DateTime.Now.AddDays(Convert.ToDouble(file.COMPLETE_IN_DAYS));
                             newfile.IS_ASSIGN = true;
+
                         }
                         newfile.CREATED_DATE = DateTime.Now;
                         newfile.COMPLETE_IN_DAYS = file.COMPLETE_IN_DAYS;
@@ -124,7 +128,7 @@ namespace INCOMETAX.Controllers
                     nf.IS_PENDING = f.IS_PENDING;
                     nf.IS_COMPLETED = f.IS_COMPLETED;
                     nf.CREATED_BY = f.CREATED_BY;
-                    ViewBag.Staffs = (from u in db.USERs select u).ToList();
+                    ViewBag.Staffs = (from u in db.USERs where u.RollId == 3 select u).ToList();
                     return PartialView(nf);
 
                 }

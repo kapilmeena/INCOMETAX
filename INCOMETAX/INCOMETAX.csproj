@@ -542,6 +542,7 @@
     <Content Include="Views\File\ShowAllFiles.cshtml" />
     <Content Include="Views\Officer\showAllOperator.cshtml" />
     <Content Include="Views\Notification\SendMessage.cshtml" />
+    <Content Include="Views\Notification\ShowMessage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
