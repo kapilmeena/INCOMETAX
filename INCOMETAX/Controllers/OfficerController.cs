@@ -109,7 +109,13 @@ namespace INCOMETAX.Controllers
         }
         public ActionResult showAllOfficer(UserModel user)
         {
-            var AllOfficer = _buss.GetAllUSer().Where(m=>m.RollId=="3");
+            var AllOfficer = _buss.GetAllUSer().Where(m=>m.RollId=="3").ToList();
+            ViewBag.AllOfficer = AllOfficer;
+            return View();
+        }
+        public ActionResult showAllOperator(UserModel user)
+        {
+            var AllOfficer = _buss.GetAllUSer().Where(m => m.RollId == "2").ToList();
             ViewBag.AllOfficer = AllOfficer;
             return View();
         }

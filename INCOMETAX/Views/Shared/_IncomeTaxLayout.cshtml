@@ -20,27 +20,27 @@
     <link href="~/Content/Resource/css/animate.min.css" rel="stylesheet" />
     <!--  Light Bootstrap Table core CSS    -->
     <link href="~/Content/Gridmvc.css" rel="stylesheet" />
-   
-
-    
 
 
-        @*<link href="~/Content/Resource/css/sweetalert.css" rel="stylesheet" />*@
-        <link href="~/Content/Resource/css/light-bootstrap-dashboard.css?v=1.4.0" rel="stylesheet" />
 
-        <!--  CSS for Demo Purpose, don't include it in your project     -->
-        <link href="~/Content/Resource/css/demo.css" rel="stylesheet" />
 
-        <!--     Fonts and icons     -->
-        <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-        <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
-        <link href="~/Content/Resource/css/pe-icon-7-stroke.css" rel="stylesheet" />
-        @*<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">*@
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.15.0/sweetalert2.min.css">
 
-        @*<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>*@
-        @*<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.15.0/sweetalert2.min.js"></script>*@
-        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    @*<link href="~/Content/Resource/css/sweetalert.css" rel="stylesheet" />*@
+    <link href="~/Content/Resource/css/light-bootstrap-dashboard.css?v=1.4.0" rel="stylesheet" />
+
+    <!--  CSS for Demo Purpose, don't include it in your project     -->
+    <link href="~/Content/Resource/css/demo.css" rel="stylesheet" />
+
+    <!--     Fonts and icons     -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
+    <link href="~/Content/Resource/css/pe-icon-7-stroke.css" rel="stylesheet" />
+    @*<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">*@
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.15.0/sweetalert2.min.css">
+
+    @*<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>*@
+    @*<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.15.0/sweetalert2.min.js"></script>*@
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <body>
     <div class="wrapper">
@@ -58,73 +58,80 @@
                     </a>
                 </div>
                 <ul class="nav">
-                    <li class="">
-                        @if (@Session["Role"].ToString() == "2")
-                        {
-                            <a href="../dashboard">
-                                <i class="pe-7s-graph"></i>
-                                <p>Dashboard</p>
-                            </a>
-                        }
-                        else
-                        {
-                            <a href="../dashboard/index">
-                                <i class="pe-7s-graph"></i>
-                                <p>Dashboard</p>
-                            </a>
-                        }
-                    </li>
-                    @if (@Session["Role"].ToString() == "2")
+                    @*<li class="">*@
+                    @if (@Session["Role"].ToString() == "1")
                     {
+
                         <li>
-                            <a href="../officer/GetOfficerDetails">
-                                <i class="pe-7s-user"></i>
-                                <p>Profile</p>
+
+                            <a href="../dashboard/">
+                                <i class="pe-7s-graph"></i>
+                                <p>Dashboard</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="../File/ShowAllFiles">
+                                <i class="pe-7s-graph"></i>
+                                <p>Files</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="../officer/showAllOfficer">
+                                <i class="pe-7s-graph"></i>
+                                <p>Officers </p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="../officer/showAllOperator">
+                                <i class="pe-7s-graph"></i>
+                                <p>Operators </p>
                             </a>
                         </li>
                     }
                     @if (@Session["Role"].ToString() == "2")
+                    {
+
+                        <li>
+                            <a href="../dashboard/">
+                                <i class="pe-7s-graph"></i>
+                                <p>Dashboard</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="../File/ShowAllFiles">
+                                <i class="pe-7s-graph"></i>
+                                <p>Files</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="../officer/GetOfficerDetails">
+                                <i class="pe-7s-graph"></i>
+                                <p>Officers</p>
+                            </a>
+                        </li>
+
+
+
+                    }
+                    @if (@Session["Role"].ToString() == "3")
                     {
                         <li>
                             <a href="../File/getFIleStaff">
-                                <i class="pe-7s-note2"></i>
-                                <p>File List</p>
+                                <i class="pe-7s-graph"></i>
+                                <p>Files</p>
                             </a>
                         </li>
+
+
                     }
-                    @if (@Session["Role"].ToString() == "2")
-                    {
-                        <li>
-                            <a href="../Officer/showAllOfficer">
-                                <i class="pe-7s-note2"></i>
-                                <p>Officer List</p>
-                            </a>
-                        </li>
-                    }
-                    @*<li>
-                            <a href="icons.html">
-                                <i class="pe-7s-science"></i>
-                                <p>Icons</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="maps.html">
-                                <i class="pe-7s-map-marker"></i>
-                                <p>Maps</p>
-                            </a>
-                        </li>*@
                     <li>
                         <a href="#">
                             <i class="pe-7s-bell"></i>
                             <p>Notifications</p>
                         </a>
                     </li>
-                    <li class="logo"></li>
-                    <li>
-                        <a href="../Login/Logout">
-                            <i class="pe-7s-news-paper"></i>
-                            <p>Logout</p>
-                        </a>
+                    <li class="logo">
+
                     </li>
                     <li>
                         <a href="#">
@@ -132,12 +139,16 @@
                             <p>Settings</p>
                         </a>
                     </li>
-                    @*<li class="active-pro">
-                            <a href="upgrade.html">
-                                <i class="pe-7s-rocket"></i>
-                                <p>Upgrade to PRO</p>
-                            </a>
-                        </li>*@
+                    <li>
+                        <a href="../Login/Logout">
+                            <i class="pe-7s-news-paper"></i>
+                            <p>Logout</p>
+                        </a>
+                    </li>
+
+
+
+
                 </ul>
             </div>
         </div>
@@ -155,12 +166,12 @@
                         {  <a class="navbar-brand" href="#">Admin Dashboard</a>
                         }
                         @if (@Session["Role"].ToString() == "2")
-                        {  <a class="navbar-brand" href="#">OPERATOR Dashboard</a>
+                        {  <a class="navbar-brand" href="#">Operator Dashboard</a>
                         }
                         @if (@Session["Role"].ToString() == "3")
-                        {  <a class="navbar-brand" href="#">SuperAdmin Dashboard</a>
+                        {  <a class="navbar-brand" href="#">Officer Dashboard</a>
                         }
-                       
+
                     </div>
                     <div class="collapse navbar-collapse">
                         <ul class="nav navbar-nav navbar-left">
