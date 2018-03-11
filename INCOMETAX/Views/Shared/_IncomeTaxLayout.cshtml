@@ -44,7 +44,7 @@
 </head>
 <body>
     <div class="wrapper">
-     <div class="sidebar" data-color="red" data-image="../Content/Resource/images/sidebar-5.jpg" id="sidebarLayout">
+     <div class="sidebar" data-color="purple" data-image="../Content/Resource/images/sidebar-5.jpg" id="sidebarLayout">
             <!--
 
                 Tip 1: you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple"
@@ -87,6 +87,12 @@
                                 <p>Operators </p>
                             </a>
                         </li>
+                        <li>
+                            <a href="#">
+                                <i class="pe-7s-mail"></i>
+                                <p>Instant Message</p>
+                            </a>
+                        </li>
                     }
                     @if (@Session["Role"].ToString() == "2")
                     {
@@ -124,12 +130,7 @@
 
 
                     }
-                    <li>
-                        <a href="#">
-                            <i class="pe-7s-bell"></i>
-                            <p>Notifications</p>
-                        </a>
-                    </li>
+                    
                     <li class="logo">
 
                     </li>
