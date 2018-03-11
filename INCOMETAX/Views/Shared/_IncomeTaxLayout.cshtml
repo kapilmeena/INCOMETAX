@@ -44,7 +44,7 @@
 </head>
 <body>
     <div class="wrapper">
-        <div class="sidebar" data-color="purple" data-image="../Content/Resource/images/sidebar-5.jpg">
+     <div class="sidebar" data-color="red" data-image="../Content/Resource/images/sidebar-5.jpg" id="sidebarLayout">
             <!--
 
                 Tip 1: you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple"
@@ -71,19 +71,19 @@
                         </li>
                         <li>
                             <a href="../File/ShowAllFiles">
-                                <i class="pe-7s-graph"></i>
+                                <i class="pe-7s-note"></i>
                                 <p>Files</p>
                             </a>
                         </li>
                         <li>
                             <a href="../officer/showAllOfficer">
-                                <i class="pe-7s-graph"></i>
+                                <i class="pe-7s-users"></i>
                                 <p>Officers </p>
                             </a>
                         </li>
                         <li>
                             <a href="../officer/showAllOperator">
-                                <i class="pe-7s-graph"></i>
+                                <i class="pe-7s-user"></i>
                                 <p>Operators </p>
                             </a>
                         </li>
@@ -99,13 +99,13 @@
                         </li>
                         <li>
                             <a href="../File/ShowAllFiles">
-                                <i class="pe-7s-graph"></i>
+                                <i class="pe-7s-note"></i>
                                 <p>Files</p>
                             </a>
                         </li>
                         <li>
-                            <a href="../officer/GetOfficerDetails">
-                                <i class="pe-7s-graph"></i>
+                            <a href="../officer/showAllOfficer">
+                                <i class="pe-7s-users"></i>
                                 <p>Officers</p>
                             </a>
                         </li>
@@ -117,7 +117,7 @@
                     {
                         <li>
                             <a href="../File/getFIleStaff">
-                                <i class="pe-7s-graph"></i>
+                                <i class="pe-7s-note"></i>
                                 <p>Files</p>
                             </a>
                         </li>
@@ -145,10 +145,6 @@
                             <p>Logout</p>
                         </a>
                     </li>
-
-
-
-
                 </ul>
             </div>
         </div>
@@ -264,12 +260,12 @@
                             </li>
                             <li>
                                 <a href="#">
-                                    Portfolio
+                                    projects
                                 </a>
                             </li>
                             <li>
                                 <a href="#">
-                                    Blog
+                                    contact
                                 </a>
                             </li>
                         </ul>
@@ -301,7 +297,7 @@
     <script src="~/Content/Resource/js/demo.js">
 
     </script>
-    @if (@Session["username"].ToString() != "Admin")
+    @if (@Session["Role"].ToString() != "1")
     {
         @*<script type="text/javascript">
                 demo.showNotification('top', 'center');
@@ -368,7 +364,18 @@
         </div>
     </div>
     @* @RenderSection("PageScript")*@
-
+    <script>
+        if(@Session["Role"] == 1){
+            document.getElementById("sidebarLayout").setAttribute("data-color", "red")
+        }
+        if(@Session["Role"] == 2){
+            document.getElementById("sidebarLayout").setAttribute("data-color", "azure")
+        }
+        if(@Session["Role"] == 3){
+            document.getElementById("sidebarLayout").setAttribute("data-color", "green")
+        }
+    </script>
+    
 </body>
 
 </html>
