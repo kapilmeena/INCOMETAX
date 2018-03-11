@@ -1,0 +1,80 @@
+﻿@model IEnumerable<INCOMETAX.Models.FileDetailModel>
+
+
+@{
+    ViewBag.Title = "Admin";
+    Layout = "~/Views/Shared/_IncomeTaxLayout.cshtml";
+    var grid = new WebGrid(Model);
+}
+
+<div class="row">
+    <div class="card">
+        <div class="header">
+
+        </div>
+        <div class="content">
+            @*<a class="btn btn-primary" href="../File/AddNEWFile" role="button">Add New Files</a>*@
+            @grid.GetHtml(
+                         htmlAttributes: new { id = "gridList", width = "100%" },
+                         tableStyle: "table table-hover display nowrap",
+                         columns:
+                             grid.Columns
+                                 (
+                                     grid.Column("File Name", "", format: @<text><span class="v-align-middle semi-bold">@item.FILE_NAME</span></text>),
+                                     grid.Column("Time", "", format: @<text><span class="v-align-middle"> @item.COMPLETE_IN_DAYS</span></text>),
+                                     grid.Column("Created on", "", format: @<text><span class="v-align-middle">@item.CREATED_DATE.ToString("dd/MM/yyyy")</span></text>),
+                                     grid.Column("Completed", "", format: @<text><label class="switch"><input type="checkbox" checked="@item.IS_COMPLETED"><span class="slider round"></span></label></text>),
+                                     //grid.Column("Pending", "", format: @<text><span class="v-align-middle">@item.IS_PENDING</span></text>),
+                                     //grid.Column("Assigned", "", format: @<text><span class="v-align-middle">@item.IS_ASSIGN</span></text>)
+                                     grid.Column("Assigned", "", format: @<text><label class="switch"><input type="checkbox" checked="@item.IS_PENDING"/><span class="slider round"></span></label></text>)
+                                     @*grid.Column("IsActive", "Active", style: "sixtypx", format: @<text><input name="Prints" readonly="true" type="checkbox" data-init-plugin="switchery" class="switchery small" checked="@item.IsActive" /></text>),*@
+                                    @*grid.Column("", "ACTION", format: @<text>
+                                        <div class="btn-group sm-m-t-10">
+                                            <a href="javascript:void(0);" data-id="@item.FILE_ID " onclick="getData(this, event);" class="btn btn-default">
+                                                <i class="fa fa-pencil"></i>
+                                            </a>
+                                            <a href="@Url.Action("DeleteFile", "File", new {fileid = item.FILE_ID}, null)" onclick="return deletealert(this, event);" class="btn btn-default">
+                                                <i class="fa fa-trash-o"></i>
+                                            </a>
+
+                                        </div></text>))*@
+    )
+                        )
+
+
+
+
+
+        </div>
+        @*<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>*@
+
+
+    </div>
+</div>
+@*<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>*@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

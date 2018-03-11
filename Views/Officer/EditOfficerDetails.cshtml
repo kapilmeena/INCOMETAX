@@ -1,0 +1,42 @@
+﻿@model INCOMETAX.Models.UserModel
+
+
+
+<div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">File Details</h4>
+        </div>
+        <div class="modal-body">
+            <p>Some text in the modal.</p>
+            @using (Html.BeginForm("EditOfficerDetails", "Officer", FormMethod.Post, new { enctype = "multipart/form-data", id = "formDetails" }))
+            {
+                <div class="form-group">
+                    @Html.HiddenFor(m => m.ID )
+                    
+                  
+
+                    <label>FirstName:</label> @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })<br />
+                    <label> LastName</label>@Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })<br />
+                    <label> Email</label>@Html.TextBoxFor(m => m.Email, new { @class = "form-control" })<br />
+
+                    <label> UserName</label>@Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })<br />
+
+                    <label> Password</label>@Html.TextBoxFor(m => m.Password, new { @class = "form-control" })<br />
+
+                    <label> MobileNo</label>@Html.TextBoxFor(m => m.MobileNo, new { @class = "form-control" })<br />
+
+                    <button type="submit" class="btn btn-lg btn-success"> Submit</button>
+                </div>
+
+
+            }
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+</div>
