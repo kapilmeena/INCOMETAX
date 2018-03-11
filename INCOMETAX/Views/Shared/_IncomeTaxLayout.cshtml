@@ -61,7 +61,7 @@
                     <li class="">
                         @if (@Session["Role"].ToString() == "2")
                         {
-                            <a href="../dashboard/admin">
+                            <a href="../dashboard">
                                 <i class="pe-7s-graph"></i>
                                 <p>Dashboard</p>
                             </a>
@@ -79,7 +79,7 @@
                         <li>
                             <a href="../officer/GetOfficerDetails">
                                 <i class="pe-7s-user"></i>
-                                <p>User Profile</p>
+                                <p>Profile</p>
                             </a>
                         </li>
                     }
@@ -92,7 +92,15 @@
                             </a>
                         </li>
                     }
-
+                    @if (@Session["Role"].ToString() == "2")
+                    {
+                        <li>
+                            <a href="../Officer/showAllOfficer">
+                                <i class="pe-7s-note2"></i>
+                                <p>Officer List</p>
+                            </a>
+                        </li>
+                    }
                     @*<li>
                             <a href="icons.html">
                                 <i class="pe-7s-science"></i>

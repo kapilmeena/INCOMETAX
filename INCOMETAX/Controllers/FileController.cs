@@ -52,7 +52,7 @@ namespace INCOMETAX.Controllers
                         db.SubmitChanges();
                         Alert("This is success message", NotificationType.success);
                         ViewBag.Staffs = (from u in db.USERs select u).ToList();
-                        return RedirectToAction("Admin", "dashboard");
+                        return RedirectToAction("index", "dashboard");
 
                     }
                     else
@@ -100,7 +100,7 @@ namespace INCOMETAX.Controllers
                 db.SubmitChanges();
             }
 
-            return RedirectToAction("Admin", "dashboard");
+            return RedirectToAction("index", "dashboard");
         }
         public PartialViewResult FileDetails(int fileid)
         {
