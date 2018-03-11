@@ -27,7 +27,10 @@ namespace INCOMETAX
 
             GlobalConfiguration.Configuration
                    .UseSqlServerStorage("INCOMETAXConnectionString");
-            RecurringJob.AddOrUpdate(() => JobsMethods.sendDaily(),Cron.Daily);
+            //RecurringJob.AddOrUpdate(() => JobsMethods.sendDaily(),Cron.Daily);
+            RecurringJob.AddOrUpdate(() => JobsMethods.DailyMessagePercentWise(), Cron.Daily);
+
+          
 
             //RecurringJob.AddOrUpdate(() => Console.WriteLine("Daily Job"), Cron.Daily);
 

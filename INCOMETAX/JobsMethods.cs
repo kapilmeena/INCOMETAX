@@ -11,6 +11,53 @@ namespace INCOMETAX
 {
     public class JobsMethods
     {
+
+
+        public static void DailyMessagePercentWise()
+        {
+            using (var db = new DataBaseDataContext())
+            {
+                var NotCompletedfiles = db.FILE_DETAILs.Where(m => m.IS_ASSIGN == true && m.IS_COMPLETED != true).ToList();
+                foreach (var file in NotCompletedfiles)
+                {
+                    //for 75 %over 
+                    var seventyfivepercent = ((file.COMPLETE_IN_DAYS / 100) * 75);
+                    var eightyPercent = ((file.COMPLETE_IN_DAYS / 100) * 90);
+                    var nintyPercent = ((file.COMPLETE_IN_DAYS / 100) * 90);
+                    var DAYS_OVER = GetWorkingDays((DateTime)file.ASSIGN_DATE, DateTime.Now);
+                    if (DAYS_OVER == nintyPercent|| DAYS_OVER== eightyPercent||DAYS_OVER== seventyfivepercent)
+                    {
+                        var User = db.USERs.Where(u => u.ID == file.ASSIGN_STAFF_ID).FirstOrDefault();
+                        //String url = "https://2factor.in/API/R1/?module=TRANS_SMS&apikey=24c78e13-211e-11e8-a895-0200cd936042&to=" + User.MobileNo + "&from=ASSIGN&templatename=ASSIGNED&var1=" + User.FirstName + "," + file.FILE_NAME+ "&var2=" + "";
+                        String url = "https://2factor.in/API/R1/?module=TRANS_SMS&apikey=24c78e13-211e-11e8-a895-0200cd936042&to=" + User.MobileNo + "&from=SECKUL&templatename=C3SECR&var1=" + User.FirstName + " " + file.FILE_NAME + "&var2=" + file.FILE_NAME;
+
+                        try
+                        {
+
+
+                            HttpWebRequest webReq = (HttpWebRequest)WebRequest.Create(string.Format(url));
+                            webReq.Method = "GET";
+                            HttpWebResponse webResponse = (HttpWebResponse)webReq.GetResponse();
+
+                            //I don't use the response for anything right now. But I might log the response answer later on.   
+                            Stream answer = webResponse.GetResponseStream();
+                            StreamReader _recivedAnswer = new StreamReader(answer);
+                          
+                        }
+                        catch (Exception e)
+                        {
+                           
+                        }
+
+                    }
+                  
+                   
+
+
+                }
+
+            }
+        }
         public static void sendDaily()
         {
             using (var db = new DataBaseDataContext())

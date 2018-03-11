@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using INCOMETAX.DbModel;
+using System.Net;
+using System.IO;
 
 namespace INCOMETAX.Models
 {
@@ -82,6 +84,32 @@ namespace INCOMETAX.Models
 
             }
 
+        }
+        public bool SendFileAssignedMessage(int userId,String FileName)
+        {
+
+            using (var db = new DataBaseDataContext())
+            {
+                var User = db.USERs.Where(u => u.ID == userId).FirstOrDefault();
+                String url = "https://2factor.in/API/R1/?module=TRANS_SMS&apikey=24c78e13-211e-11e8-a895-0200cd936042&to=" + User.MobileNo + "&from=ASSIGN&templatename=ASSIGNED&var1=" +User.FirstName+","+ FileName + "&var2=" + "";
+                try
+                {
+
+
+                    HttpWebRequest webReq = (HttpWebRequest)WebRequest.Create(string.Format(url));
+                    webReq.Method = "GET";
+                    HttpWebResponse webResponse = (HttpWebResponse)webReq.GetResponse();
+
+                    //I don't use the response for anything right now. But I might log the response answer later on.   
+                    Stream answer = webResponse.GetResponseStream();
+                    StreamReader _recivedAnswer = new StreamReader(answer);
+                    return true;
+                }
+                catch (Exception e)
+                {
+                    return false;
+                }
+            }
         }
     }
 }

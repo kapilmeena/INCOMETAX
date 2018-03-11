@@ -81,7 +81,7 @@ namespace INCOMETAX.Controllers
         {
             using (var db = new DataBaseDataContext())
             {
-                var user = (from u in db.USERs where (u.UserName.Equals(loginuser.Email) || u.Email.Equals(loginuser.Email) && u.Password.Equals(loginuser.Password) && u.RollId == 1) select u).FirstOrDefault();
+                var user = (from u in db.USERs where ((u.UserName.Equals(loginuser.Email) || u.Email.Equals(loginuser.Email)) && (u.Password==loginuser.Password )&&(u.RollId == 1)) select u).FirstOrDefault();
 
                 if (user!=null)
                 {
