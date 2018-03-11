@@ -59,12 +59,12 @@ namespace INCOMETAX.Models
                     {
                         var u = new UserModel();
                         u.ID = user.ID;
-
                         u.FirstName = user.FirstName;
                         u.LastName = user.LastName;
                         u.Email = user.Email;
                         u.UserName = user.UserName;
                         u.Password = user.Password;
+                        u.RollId =Convert.ToString( user.RollId);
                         u.MobileNo = user.MobileNo;
                         AlluserList.Add(u);
 
