@@ -13,6 +13,13 @@ namespace INCOMETAX.Models
         public List<UserModel> AllOperator { get; set; }
 
     }
-   
+    public class AdminDashboardModel
+    {
+        public List<FileDetailModel> AllFiles { get; set; }
+        public List<UserModel> AllOfficerList { get; set; }
+        public List<UserModel> AllOperator { get; set; }
+
+    }
+
 
 }

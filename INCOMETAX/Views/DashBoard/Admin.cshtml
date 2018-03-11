@@ -4,7 +4,7 @@
 @{
     ViewBag.Title = "Admin";
     Layout = "~/Views/Shared/_IncomeTaxLayout.cshtml";
-    var grid = new WebGrid(Model.AllFiles);
+    var grid = new WebGrid(ViewBag.AllFiles);
 }
 
 <div class="row">
