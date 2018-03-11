@@ -59,7 +59,7 @@
                 </div>
                 <ul class="nav">
                     <li class="">
-                        @if (@Session["username"].ToString() == "Admin")
+                        @if (@Session["Role"].ToString() == "2")
                         {
                             <a href="../dashboard/admin">
                                 <i class="pe-7s-graph"></i>
@@ -74,7 +74,7 @@
                             </a>
                         }
                     </li>
-                    @if (@Session["username"].ToString() != "Admin")
+                    @if (@Session["Role"].ToString() == "2")
                     {
                         <li>
                             <a href="../officer/GetOfficerDetails">
@@ -83,7 +83,7 @@
                             </a>
                         </li>
                     }
-                    @if (@Session["username"].ToString() != "Admin")
+                    @if (@Session["Role"].ToString() == "2")
                     {
                         <li>
                             <a href="../File/getFIleStaff">
