@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewBag.Title = "ShowMessage";
+    Layout = "~/Views/Shared/_IncomeTaxLayout.cshtml";
+    var grid = new WebGrid(ViewBag.Messages);
+}
+
+<div class="row">
+    <div class="card">
+        <div class="header">
+
+        </div>
+        <div class="content">
+            @*<a class="btn btn-primary" href="../File/AddNEWFile" role="button">Add New Files</a>*@
+            @grid.GetHtml(
+                         htmlAttributes: new { id = "gridList", width = "100%" },
+                         tableStyle: "table table-hover display nowrap",
+                         columns:
+                             grid.Columns
+                                 (
+                                     grid.Column("Messages", "", format: @<text><span class="v-align-middle semi-bold">@item.MessageText</span></text>),
+                                     grid.Column("Date", "", format: @<text><span class="v-align-middle"> @item.date</span></text>)
+                                                                                                                                                                                                     @*grid.Column("IsActive", "Active", style: "sixtypx", format: @<text><input name="Prints" readonly="true" type="checkbox" data-init-plugin="switchery" class="switchery small" checked="@item.IsActive" /></text>),*@
+                                                                                                                                                                                                        @*grid.Column("", "ACTION", format: @<text>
+                                                                                                                                                                                                            <div class="btn-group sm-m-t-10">
+                                                                                                                                                                                                                <a href="javascript:void(0);" data-id="@item.FILE_ID " onclick="getData(this, event);" class="btn btn-default">
+                                                                                                                                                                                                                    <i class="fa fa-pencil"></i>
+                                                                                                                                                                                                                </a>
+                                                                                                                                                                                                                <a href="@Url.Action("DeleteFile", "File", new {fileid = item.FILE_ID}, null)" onclick="return deletealert(this, event);" class="btn btn-default">
+                                                                                                                                                                                                                    <i class="fa fa-trash-o"></i>
+                                                                                                                                                                                                                </a>
+
+                                                                                                                                                                                                            </div></text>))*@
+    )
+                        )
+
+
+
+
+
+        </div>
+        @*<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>*@
+
+
+    </div>
+</div>
+
+

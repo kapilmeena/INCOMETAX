@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="INCOMETAX" Class="DataBaseDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Data Source=MY_PC;Initial Catalog=INCOMETAX;User ID=sa" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="INCOMETAXConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="WebSettings" ConnectionString="Data Source=ZARVIS\SQLEXPRESS;Initial Catalog=INCOMETAX;User ID=sa" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="INCOMETAXConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.FILE_DETAILS" Member="FILE_DETAILs">
     <Type Name="FILE_DETAIL">
       <Column Name="FILE_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -27,6 +27,15 @@
       <Column Name="Password" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
       <Column Name="MobileNo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
       <Column Name="Address" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MESSAGE_DETAILS" Member="MESSAGE_DETAILs">
+    <Type Name="MESSAGE_DETAIL">
+      <Column Name="MID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TEXT" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="SENDERID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RECIVERID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CREATEDDATE" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </Type>
   </Table>
 </Database>
