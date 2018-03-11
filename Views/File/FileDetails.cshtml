@@ -1,0 +1,41 @@
+﻿@model INCOMETAX.Models.FileDetailModel
+
+
+<div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">File Details</h4>
+        </div>
+        <div class="modal-body">
+            <p>Some text in the modal.</p>
+            @using (Html.BeginForm("AddNEWFile", "File", FormMethod.Post, new { enctype = "multipart/form-data", id = "formDetails" }))
+            {
+                <div class="form-group">
+                    @Html.HiddenFor(m => m.FILE_ID)
+                    @Html.HiddenFor(m => m.CREATED_DATE)
+                    @Html.HiddenFor(m => m.CREATED_BY)
+                    @Html.HiddenFor(m => m.ASSIGN_DATE)
+                    @Html.HiddenFor(m => m.DEADLINE_DATE)
+                    @Html.HiddenFor(m => m.IS_ASSIGN)
+                    @Html.HiddenFor(m => m.IS_COMPLETED)
+                    @Html.HiddenFor(m => m.COMPLETE_IN_DAYS)
+                    @Html.HiddenFor(m => m.IS_PENDING)
+
+                    
+                    <label>FileName:</label> @Html.TextBoxFor(m => m.FILE_NAME, new { @class = "form-control" })<br />
+                    <label> Number of DAys:</label>@Html.TextBoxFor(m => m.COMPLETE_IN_DAYS, new { @class = "form-control", @type = "number" })<br />
+                    <label>  Staff:</label> @Html.DropDownListFor(m => m.ASSIGN_STAFF_ID, new SelectList(ViewBag.Staffs, "ID", "FirstName"), "Select ", new { @class = "form-control" })<br />
+                    <button type="submit" class="btn btn-lg btn-success"> Submit</button>
+                </div>
+
+
+            }
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+</div>
