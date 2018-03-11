@@ -58,6 +58,8 @@ namespace INCOMETAX.Controllers
                 {
                     Session["username"] = user.UserName;
                     Session["userid"] = user.ID;
+                    Session["Role"] = user.RollId;
+
                     FormsAuthentication.SetAuthCookie(user.Email, false);
 
                     var authTicket = new FormsAuthenticationTicket(1, user.Email, DateTime.Now, DateTime.Now.AddMinutes(20), false, Convert.ToString(user.RollId));
@@ -85,6 +87,8 @@ namespace INCOMETAX.Controllers
                 {
                     Session["username"] = user.UserName;
                     Session["userid"] = user.ID;
+                    Session["Role"] = user.RollId;
+
                     FormsAuthentication.SetAuthCookie(user.Email, false);
 
                     var authTicket = new FormsAuthenticationTicket(1, user.Email, DateTime.Now, DateTime.Now.AddMinutes(20), false, Convert.ToString(user.RollId));

@@ -15,24 +15,33 @@ namespace INCOMETAX.Controllers
         [Authorize(Roles ="1,2,3")]
         public ActionResult index()
         {
+            var roll = Convert.ToInt32(Session["Role"]);
             if (Convert.ToInt32(Session["Role"]) == 1)
             {
                 ViewBag.allFiles = _buss.getAllFilesList();
 
-
+                return View("SuperAdmin");
 
             }
             if (Convert.ToInt32(Session["Role"]) == 2)
             {
+
+                var adminModel = new AdminDashboardModel();
+                ViewBag.AllFiles = _buss.getAllFilesList();
+
+                return View("Admin");
+
             }
             if (Convert.ToInt32(Session["Role"]) == 3)
             {
+                return View("Officer");
+
             }
 
 
 
 
-                return View();
+            return View();
         }
 
 
