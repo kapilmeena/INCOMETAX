@@ -12,6 +12,7 @@ namespace INCOMETAX.Controllers
     [Authorize(Roles = "1,2,3")]
     public class OfficerController : Controller
     {
+        Business _buss=new Business();
         // GET: Officer
         public ActionResult Index()
         {
@@ -105,6 +106,12 @@ namespace INCOMETAX.Controllers
                 return Json(0, JsonRequestBehavior.AllowGet);
 
             }
+        }
+        public ActionResult showAllOfficer(UserModel user)
+        {
+            var AllOfficer = _buss.GetAllUSer().Where(m=>m.RollId=="3");
+            ViewBag.AllOfficer = AllOfficer;
+            return View();
         }
     }
 }

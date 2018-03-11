@@ -25,7 +25,6 @@ namespace INCOMETAX.Controllers
             }
             if (Convert.ToInt32(Session["Role"]) == 2)
             {
-
                 var adminModel = new AdminDashboardModel();
                 ViewBag.AllFiles = _buss.getAllFilesList();
 

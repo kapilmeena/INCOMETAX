@@ -21,7 +21,7 @@ namespace INCOMETAX.Controllers
         {
             using (var db = new DataBaseDataContext())
             {
-                ViewBag.Staffs = (from u in db.USERs select u).ToList();
+                ViewBag.Staffs = (from u in db.USERs where u.RollId==2 select u).ToList();
 
             }
             return View();
@@ -73,6 +73,7 @@ namespace INCOMETAX.Controllers
                         db.FILE_DETAILs.InsertOnSubmit(newfile);
                         db.SubmitChanges();
                         Alert("This is success message", NotificationType.success);
+                        ModelState.Clear();
                         ViewBag.Staffs = (from u in db.USERs select u).ToList();
                         return View();
                     }
