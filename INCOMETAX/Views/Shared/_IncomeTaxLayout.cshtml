@@ -54,7 +54,7 @@
             <div class="sidebar-wrapper">
                 <div class="logo">
                     <a href="#" class="simple-text">
-                       INCOMETAX
+                        INCOMETAX
                     </a>
                 </div>
                 <ul class="nav">
@@ -68,7 +68,7 @@
                         }
                         else
                         {
-                            <a href="../dashboard/staff">
+                            <a href="../dashboard/index">
                                 <i class="pe-7s-graph"></i>
                                 <p>Dashboard</p>
                             </a>
@@ -92,19 +92,19 @@
                             </a>
                         </li>
                     }
-                    
+
                     @*<li>
-                        <a href="icons.html">
-                            <i class="pe-7s-science"></i>
-                            <p>Icons</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="maps.html">
-                            <i class="pe-7s-map-marker"></i>
-                            <p>Maps</p>
-                        </a>
-                    </li>*@
+                            <a href="icons.html">
+                                <i class="pe-7s-science"></i>
+                                <p>Icons</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="maps.html">
+                                <i class="pe-7s-map-marker"></i>
+                                <p>Maps</p>
+                            </a>
+                        </li>*@
                     <li>
                         <a href="#">
                             <i class="pe-7s-bell"></i>
@@ -143,70 +143,79 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="#">Dashboard</a>
+                        @if (@Session["Role"].ToString() == "1")
+                        {  <a class="navbar-brand" href="#">Admin Dashboard</a>
+                        }
+                        @if (@Session["Role"].ToString() == "2")
+                        {  <a class="navbar-brand" href="#">OPERATOR Dashboard</a>
+                        }
+                        @if (@Session["Role"].ToString() == "3")
+                        {  <a class="navbar-brand" href="#">SuperAdmin Dashboard</a>
+                        }
+                       
                     </div>
                     <div class="collapse navbar-collapse">
                         <ul class="nav navbar-nav navbar-left">
                             @*<li>
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <i class="fa fa-dashboard"></i>
-                                    <p class="hidden-lg hidden-md">Dashboard</p>
-                                </a>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <i class="fa fa-globe"></i>
-                                    <b class="caret hidden-lg hidden-md"></b>
-                                    <p class="hidden-lg hidden-md">
-                                        5 Notifications
-                                        <b class="caret"></b>
-                                    </p>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">Notification 1</a></li>
-                                    <li><a href="#">Notification 2</a></li>
-                                    <li><a href="#">Notification 3</a></li>
-                                    <li><a href="#">Notification 4</a></li>
-                                    <li><a href="#">Another notification</a></li>
-                                </ul>
-                            </li>*@
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                        <i class="fa fa-dashboard"></i>
+                                        <p class="hidden-lg hidden-md">Dashboard</p>
+                                    </a>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                        <i class="fa fa-globe"></i>
+                                        <b class="caret hidden-lg hidden-md"></b>
+                                        <p class="hidden-lg hidden-md">
+                                            5 Notifications
+                                            <b class="caret"></b>
+                                        </p>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#">Notification 1</a></li>
+                                        <li><a href="#">Notification 2</a></li>
+                                        <li><a href="#">Notification 3</a></li>
+                                        <li><a href="#">Notification 4</a></li>
+                                        <li><a href="#">Another notification</a></li>
+                                    </ul>
+                                </li>*@
                             @*<li>
-                                <a href="">
-                                    <i class="fa fa-search"></i>
-                                    <p class="hidden-lg hidden-md">Search</p>
-                                </a>
-                            </li>*@
+                                    <a href="">
+                                        <i class="fa fa-search"></i>
+                                        <p class="hidden-lg hidden-md">Search</p>
+                                    </a>
+                                </li>*@
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
                             @*<li>
-                                <a href="">
-                                    <p>Account</p>
-                                </a>
-                            </li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <p>
-                                        Dropdown
-                                        <b class="caret"></b>
-                                    </p>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">Action</a></li>
-                                    <li><a href="#">Another action</a></li>
-                                    <li><a href="#">Something</a></li>
-                                    <li><a href="#">Another action</a></li>
-                                    <li><a href="#">Something</a></li>
-                                    <li class="divider"></li>
-                                    <li><a href="#">Separated link</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#">
-                                        <p>Log out</p>
-                                    </a>
-                            </li>
-                            <li class="separator hidden-lg"></li>
-                        </ul>*@
+                                        <a href="">
+                                            <p>Account</p>
+                                        </a>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                            <p>
+                                                Dropdown
+                                                <b class="caret"></b>
+                                            </p>
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="#">Action</a></li>
+                                            <li><a href="#">Another action</a></li>
+                                            <li><a href="#">Something</a></li>
+                                            <li><a href="#">Another action</a></li>
+                                            <li><a href="#">Something</a></li>
+                                            <li class="divider"></li>
+                                            <li><a href="#">Separated link</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                                <p>Log out</p>
+                                            </a>
+                                    </li>
+                                    <li class="separator hidden-lg"></li>
+                                </ul>*@
                     </div>
                 </div>
             </nav>
@@ -248,7 +257,7 @@
                     </nav>
                     <p class="copyright pull-right">
                         &copy;
-                        <script>document.write(new Date().getFullYear())</script> 
+                        <script>document.write(new Date().getFullYear())</script>
                     </p>
                 </div>
             </footer>
@@ -273,73 +282,73 @@
     <script src="~/Content/Resource/js/demo.js">
 
     </script>
-    @if (@Session["username"].ToString()!= "Admin")
+    @if (@Session["username"].ToString() != "Admin")
     {
         @*<script type="text/javascript">
-            demo.showNotification('top', 'center');
+                demo.showNotification('top', 'center');
 
-        </script>*@
+            </script>*@
     }
-@*@RenderSection("scriptsection")*@
-<script type="text/javascript">
+    @*@RenderSection("scriptsection")*@
+    <script type="text/javascript">
 
 
 
 
-    //$(function () {
-    //    $('#showtoast').click(function () {
-    //        toastr.options =
-    //          {
-    //              "debug": false,
-    //              "positionClass": $("#toastrPositionGroup input:radio:checked").val(),
-    //              "onclick": null,
-    //              "fadeIn": 300,
-    //              "fadeOut": 100,
-    //              "timeOut": 3000,
-    //              "extendedTimeOut": 1000
-    //          }
+        //$(function () {
+        //    $('#showtoast').click(function () {
+        //        toastr.options =
+        //          {
+        //              "debug": false,
+        //              "positionClass": $("#toastrPositionGroup input:radio:checked").val(),
+        //              "onclick": null,
+        //              "fadeIn": 300,
+        //              "fadeOut": 100,
+        //              "timeOut": 3000,
+        //              "extendedTimeOut": 1000
+        //          }
 
-    //        var d = Date();
-    //        toastr[$("#toastrTypeGroup input:radio:checked").val()](d, "Current Day & Time");
-    //    });
-    //});
+        //        var d = Date();
+        //        toastr[$("#toastrTypeGroup input:radio:checked").val()](d, "Current Day & Time");
+        //    });
+        //});
 
-    function deletealert(ctl, event) {
-        var defaultAction = $(ctl).prop("href");
-        event.preventDefault();
+        function deletealert(ctl, event) {
+            var defaultAction = $(ctl).prop("href");
+            event.preventDefault();
 
-        swal({
-            title: "Are you sure?",
-            text: "you want to delete this, you will not be able to recover this!",
-            icon: "warning",
-            buttons: true,
-            dangerMode: true
-        })
+            swal({
+                title: "Are you sure?",
+                text: "you want to delete this, you will not be able to recover this!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true
+            })
 
-            .then((willDelete) => {
-                if (willDelete) {
+                .then((willDelete) => {
+                    if (willDelete) {
 
-                    //swal("Company has been deleted!",
-                    //    {
-                    //        icon: "success"
+                        //swal("Company has been deleted!",
+                        //    {
+                        //        icon: "success"
 
-                    //    });
+                        //    });
 
-                    window.location.href = defaultAction;
-                    return true;
-                } else {
-                    /*swal("Your imaginary file is safe!");*/
-                    return false;
-                }
-            });
-    }
-        </script>
-<div id="myModalContent" style="">
+                        window.location.href = defaultAction;
+                        return true;
+                    } else {
+                        /*swal("Your imaginary file is safe!");*/
+                        return false;
+                    }
+                });
+        }
+    </script>
+    <div id="myModalContent" style="">
 
-    <div id="detailsModel" class="modal fade" role="dialog" style="">
+        <div id="detailsModel" class="modal fade" role="dialog" style="">
+        </div>
     </div>
-</div>
-   @* @RenderSection("PageScript")*@
+    @* @RenderSection("PageScript")*@
 
 </body>
 

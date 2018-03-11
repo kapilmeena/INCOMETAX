@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace INCOMETAX.Controllers
 {
+    [Authorize(Roles = "1,2,3")]
     public class OfficerController : Controller
     {
         // GET: Officer

@@ -9,6 +9,7 @@ using static INCOMETAX.Enum;
 
 namespace INCOMETAX.Controllers
 {
+    [Authorize(Roles = "1,2,3")]
     public class FileController : BaseController
     {
         // GET: File

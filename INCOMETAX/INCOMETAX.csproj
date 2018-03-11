@@ -535,7 +535,7 @@
     <Content Include="Views\UserRegister\RegisterOfficer.cshtml" />
     <Content Include="Views\Login\OfficerLogin.cshtml" />
     <Content Include="Views\Login\SuperAdminLogin.cshtml" />
-    <Content Include="Views\DashBoard\SuperAdminView.cshtml" />
+    <Content Include="Views\DashBoard\SuperAdmin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
