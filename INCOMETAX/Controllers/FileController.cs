@@ -22,7 +22,7 @@ namespace INCOMETAX.Controllers
         {
             using (var db = new DataBaseDataContext())
             {
-                ViewBag.Staffs = (from u in db.USERs where u.RollId==3 select u).ToList();
+                ViewBag.Staffs = (from u in db.USERs where u.RollId == 3 select u).ToList();
 
             }
             return View();
@@ -45,7 +45,7 @@ namespace INCOMETAX.Controllers
                             newfile.ASSIGN_DATE = DateTime.Now;
                             newfile.DEADLINE_DATE = DateTime.Now.AddDays(Convert.ToDouble(file.COMPLETE_IN_DAYS));
                             newfile.IS_ASSIGN = true;
-                           _buss.SendFileAssignedMessage((int)file.ASSIGN_STAFF_ID, file.FILE_NAME);
+                            _buss.SendFileAssignedMessage((int)file.ASSIGN_STAFF_ID, file.FILE_NAME);
 
                         }
                         newfile.CREATED_DATE = DateTime.Now;
@@ -113,7 +113,7 @@ namespace INCOMETAX.Controllers
             {
                 try
                 {
-                    var f = db.FILE_DETAILs.Where(m => m.FILE_ID == fileid&&m.IS_DELETE!=true).FirstOrDefault();
+                    var f = db.FILE_DETAILs.Where(m => m.FILE_ID == fileid && m.IS_DELETE != true).FirstOrDefault();
 
 
                     var nf = new FileDetailModel();
@@ -146,7 +146,7 @@ namespace INCOMETAX.Controllers
                 try
                 {
                     var uid = Session["userid"];
-                    var files = db.FILE_DETAILs.Where(m => m.IS_DELETE ==null).OrderByDescending(x=>x.CREATED_DATE);
+                    var files = db.FILE_DETAILs.Where(m => m.IS_DELETE == null).OrderByDescending(x => x.CREATED_DATE);
                     var fileList = new List<FileDetailModel>();
                     foreach (var f in files)
                     {
@@ -165,7 +165,7 @@ namespace INCOMETAX.Controllers
                         fileList.Add(nf);
 
                     }
-                    ViewBag.AllFiles= fileList;
+                    ViewBag.AllFiles = fileList;
 
                     return View();
                 }
@@ -185,8 +185,8 @@ namespace INCOMETAX.Controllers
             {
                 try
                 {
-                    var uid= Session["userid"];
-                    var files = db.FILE_DETAILs.Where(m => m.ASSIGN_STAFF_ID.Equals(Session["userid" ])&& m.IS_DELETE!=true).ToList();
+                    var uid = Session["userid"];
+                    var files = db.FILE_DETAILs.Where((m => m.ASSIGN_STAFF_ID.Equals(Session["userid"]) && m.IS_DELETE == null)).ToList();
                     var fileList = new List<FileDetailModel>();
                     foreach (var f in files)
                     {
@@ -216,7 +216,19 @@ namespace INCOMETAX.Controllers
 
 
             }
+        }
 
+        public ActionResult ChngeToComplete(string FileId)
+        {
+            using (var db = new DataBaseDataContext())
+            {
+                var Fid = Convert.ToInt32(FileId);
+                var file = db.FILE_DETAILs.Where(m => m.FILE_ID == Fid).FirstOrDefault();
+                file.IS_COMPLETED = true;
+                file.IS_PENDING = false;
+                db.SubmitChanges();
+                return RedirectToAction("getFIleStaff");
+            }
         }
 
     }

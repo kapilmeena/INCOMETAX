@@ -2,14 +2,77 @@
 @{
     ViewBag.Title = "SuperAdminView";
     Layout = "~/Views/Shared/_IncomeTaxLayout.cshtml";
+    var grid1 = new WebGrid(ViewBag.AllOfficers);
+    var grid2 = new WebGrid(ViewBag.AllOperator);
+
+    var grid3 = new WebGrid(ViewBag.AllFiles);
+
+
 }
 
 <div class="row">
     <div class="card">
         <div class="header">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="panel">
+                        @grid1.GetHtml(
+                        htmlAttributes: new { id = "gridList", width = "100%" },
+                        tableStyle: "table table-hover display nowrap",
+                        columns:
+                            grid1.Columns
+                                (
+                                    grid1.Column(" Officer Name", "", format: @<text><span class="v-align-middle semi-bold">@item.FirstName @item.LastName</span></text>)
 
-        </div>
-        <div class="content">
+
+                        ))
+
+                    </div>
+
+
+
+
+
+
+
+
+
+                </div>
+               
+                <div class="col-md-4">
+                    <div class="panel">
+                        @grid2.GetHtml(
+                        htmlAttributes: new { id = "gridList", width = "100%" },
+                        tableStyle: "table table-hover display nowrap",
+                        columns:
+                            grid2.Columns
+                                (
+                                    grid2.Column(" Operators Name", "", format: @<text><span class="v-align-middle semi-bold">@item.FirstName @item.LastName</span></text>)
+
+
+                        ))
+                    </div>
+                </div>
+              
+                    <div class="col-md-4">
+                        <div class="panel">
+                            @grid3.GetHtml(
+                        htmlAttributes: new { id = "gridList", width = "100%" },
+                        tableStyle: "table table-hover display nowrap",
+                        columns:
+                            grid3.Columns
+                                (
+                                    grid3.Column("File Name", "", format: @<text><span class="v-align-middle semi-bold">@item.FILE_NAME</span></text>)
+
+
+                        ))
+                        </div>
+                    </div>
+                
+            </div>
+
+            </div>
+            <div class="content">
+            </div>
         </div>
     </div>
-</div>

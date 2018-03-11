@@ -22,9 +22,9 @@
                                  (
                                      grid.Column("File Name", "", format: @<text><span class="v-align-middle semi-bold">@item.FILE_NAME</span></text>),
                                      grid.Column("Time", "", format: @<text><span class="v-align-middle"> @item.COMPLETE_IN_DAYS</span></text>),
-                                     grid.Column("Created on", "", format: @<text><span class="v-align-middle">@item.CREATED_DATE.ToString("dd/MM/yyyy")</span></text>),
-                                     grid.Column("Pending", "", format: @<text><label class="switch"><input type="checkbox" checked="@item.IS_PENDING" disabled /><span class="slider round"></span></label></text>)
-                                     grid.Column("Completed", "", format: @<text><label class="switch"><input type="checkbox" checked="@item.IS_COMPLETED"><span class="slider round"></span></label></text>),
+                                     grid.Column("Assigned on", "", format: @<text><span class="v-align-middle">@item.ASSIGN_DATE.ToString("dd/MM/yyyy")</span></text>),
+                                     grid.Column("Pending", "", format: @<text><label class="switch"><input type="checkbox" checked="@item.IS_PENDING" disabled /><span class="slider round"></span></label></text>),
+                                     grid.Column("Completed", "", format: @<text><label class="switch"><input type="checkbox" data-id=@item.FILE_ID checked="@item.IS_COMPLETED"  onchange="ChangeToComplete('@item.FILE_ID');";><span class="slider round"></span></label></text>)
                                      //grid.Column("Pending", "", format: @<text><span class="v-align-middle">@item.IS_PENDING</span></text>),
                                      //grid.Column("Assigned", "", format: @<text><span class="v-align-middle">@item.IS_ASSIGN</span></text>)
                                      @*grid.Column("IsActive", "Active", style: "sixtypx", format: @<text><input name="Prints" readonly="true" type="checkbox" data-init-plugin="switchery" class="switchery small" checked="@item.IsActive" /></text>),*@
@@ -54,7 +54,26 @@
 @*<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>*@
 
 
+<script>
+    function ChangeToComplete(eve) {
+        //alert(eve);
+        $.ajax({
+            type: "GET",
+            url: '../File/ChngeToComplete',
+            data: { FileId: eve },
+            contentType: 'application/json; charset=utf-8',
+            datatype: 'html',
+            success: function (result) {
+                //alert('Success ');
+                document.location.reload(true);
+            },
+            error: function (result) {
+                alert('Fail ');
+            }
+        });
+    }
 
+    </script>
 
 
 

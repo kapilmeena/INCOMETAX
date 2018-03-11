@@ -18,7 +18,9 @@ namespace INCOMETAX.Controllers
             var roll = Convert.ToInt32(Session["Role"]);
             if (Convert.ToInt32(Session["Role"]) == 1)
             {
-                ViewBag.allFiles = _buss.getAllFilesList();
+                ViewBag.AllFiles = _buss.getAllFilesList();
+                ViewBag.AllOfficers = _buss.GetAllUSer().Where(m=>m.RollId=="3");
+                ViewBag.AllOperator = _buss.GetAllUSer().Where(m => m.RollId == "2"); ;
 
                 return View("SuperAdmin");
 
@@ -29,13 +31,13 @@ namespace INCOMETAX.Controllers
                 ViewBag.AllFiles = _buss.getAllFilesList();
 
                 //return View("Admin");
-                RedirectToAction("ShowAllFiles", "File");
+               return RedirectToAction("ShowAllFiles", "File");
 
             }
             if (Convert.ToInt32(Session["Role"]) == 3)
             {
                 //return View("Officer");
-                RedirectToAction("getFIleStaff", "File");
+                return RedirectToAction("getFIleStaff", "File");
 
             }
 
