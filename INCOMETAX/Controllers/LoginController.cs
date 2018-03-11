@@ -81,7 +81,7 @@ namespace INCOMETAX.Controllers
             {
                 var user = (from u in db.USERs where (u.UserName.Equals(loginuser.Email) || u.Email.Equals(loginuser.Email) && u.Password.Equals(loginuser.Password) && u.RollId == 1) select u).FirstOrDefault();
 
-                if (loginuser.Email == "admin" && loginuser.Password == "admin123")
+                if (user!=null)
                 {
                     Session["username"] = user.UserName;
                     Session["userid"] = user.ID;
