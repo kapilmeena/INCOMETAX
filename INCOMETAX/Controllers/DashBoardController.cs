@@ -28,12 +28,14 @@ namespace INCOMETAX.Controllers
                 var adminModel = new AdminDashboardModel();
                 ViewBag.AllFiles = _buss.getAllFilesList();
 
-                return View("Admin");
+                //return View("Admin");
+                RedirectToAction("ShowAllFiles", "File");
 
             }
             if (Convert.ToInt32(Session["Role"]) == 3)
             {
-                return View("Officer");
+                //return View("Officer");
+                RedirectToAction("getFIleStaff", "File");
 
             }
 

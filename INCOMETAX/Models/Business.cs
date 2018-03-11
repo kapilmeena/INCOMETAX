@@ -19,7 +19,7 @@ namespace INCOMETAX.Models
                 {
 
 
-                    var dbfileList = db.FILE_DETAILs;
+                    var dbfileList = db.FILE_DETAILs.Where(f=>f.IS_DELETE!=true).ToList();
                     foreach (var f in dbfileList)
                     {
                         var file = new FileDetailModel();

@@ -105,7 +105,7 @@ namespace INCOMETAX.Controllers
                 db.SubmitChanges();
             }
 
-            return RedirectToAction("index", "dashboard");
+            return RedirectToAction("ShowAllFiles", "File");
         }
         public PartialViewResult FileDetails(int fileid)
         {
@@ -113,7 +113,7 @@ namespace INCOMETAX.Controllers
             {
                 try
                 {
-                    var f = db.FILE_DETAILs.Where(m => m.FILE_ID == fileid).FirstOrDefault();
+                    var f = db.FILE_DETAILs.Where(m => m.FILE_ID == fileid&&m.IS_DELETE!=true).FirstOrDefault();
 
 
                     var nf = new FileDetailModel();
@@ -146,7 +146,7 @@ namespace INCOMETAX.Controllers
                 try
                 {
                     var uid = Session["userid"];
-                    var files = db.FILE_DETAILs.ToList();
+                    var files = db.FILE_DETAILs.Where(m => m.IS_DELETE ==null).OrderByDescending(x=>x.CREATED_DATE);
                     var fileList = new List<FileDetailModel>();
                     foreach (var f in files)
                     {
@@ -186,7 +186,7 @@ namespace INCOMETAX.Controllers
                 try
                 {
                     var uid= Session["userid"];
-                    var files = db.FILE_DETAILs.Where(m => m.ASSIGN_STAFF_ID.Equals(Session["userid"])).ToList();
+                    var files = db.FILE_DETAILs.Where(m => m.ASSIGN_STAFF_ID.Equals(Session["userid" ])&& m.IS_DELETE!=true).ToList();
                     var fileList = new List<FileDetailModel>();
                     foreach (var f in files)
                     {
