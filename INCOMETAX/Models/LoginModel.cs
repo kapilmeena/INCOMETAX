@@ -38,6 +38,7 @@ namespace INCOMETAX.Models
         public String MobileNo { get; set; }
         public String RollId{ get; set; }
         public String Address { get; set; }
+        public bool Chekbox { get; set; }
 
     }
 }
