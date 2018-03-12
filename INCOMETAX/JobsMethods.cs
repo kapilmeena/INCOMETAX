@@ -21,9 +21,10 @@ namespace INCOMETAX
                 foreach (var file in NotCompletedfiles)
                 {
                     //for 75 %over 
-                    var seventyfivepercent = ((file.COMPLETE_IN_DAYS / 100) * 75);
-                    var eightyPercent = ((file.COMPLETE_IN_DAYS / 100) * 90);
-                    var nintyPercent = ((file.COMPLETE_IN_DAYS / 100) * 90);
+                    var num = 100 / 2;
+                    int seventyfivepercent = (Convert.ToInt32(file.COMPLETE_IN_DAYS))*75/100;
+                    int eightyPercent =Convert.ToInt16((file.COMPLETE_IN_DAYS)*0.80);
+                    int nintyPercent = Convert.ToInt16((file.COMPLETE_IN_DAYS) * 0.90);
                     var DAYS_OVER = GetWorkingDays((DateTime)file.ASSIGN_DATE, DateTime.Now);
                     if (DAYS_OVER == nintyPercent|| DAYS_OVER== eightyPercent||DAYS_OVER== seventyfivepercent)
                     {

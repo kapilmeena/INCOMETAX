@@ -6,86 +6,91 @@
     var grid = new WebGrid(Model.officers);
 }
 
-@Html.EditorFor(m => m.MessageText, new { id = "msgTXT" })
+<div class="row"><div class="col-md-10">
+                     @Html.TextAreaFor(m => m.MessageText, new { style="Width:100%;height:100px;",placeholder="Enter Text Message Here!!!!!!!!!!!!!!" })</div></div>
+   
 
-<div class="row">
-    <div class="card">
-        <div class="header">
+    <div class="row">
+    <div class="col-md-10">
+        <div class="card">
+            <div class="header">
+
+            </div>
+            <div class="content">
+
+                @using (Html.BeginForm("SendMessage", "Notification"))
+
+                {
+                    @*<a class="btn btn-primary" href="../File/AddNEWFile" role="button">Add New Files</a>*@
+                    @grid.GetHtml(
+                htmlAttributes: new { id = "gridList", width = "100%" },
+                tableStyle: "table table-hover display nowrap",
+                columns:
+                    grid.Columns
+                        (
+                            grid.Column("Chekbox", "Chekbox", format: @<text><input class='chkbox  ckhk' type='checkbox' data-id="@item.Id" onclick="getData(this, event);" /></text>),
+                            grid.Column("First Name", "", format: @<text><span class="v-align-middle semi-bold">@item.FirstName</span></text>),
+                            grid.Column("Last Name", "", format: @<text><span class="v-align-middle"> @item.LastName</span></text>),
+                            grid.Column("Eamil", "", format: @<text><span class="v-align-middle">@item.Email</span></text>),
+                            grid.Column("Mobile", "", format: @<text><span class="v-align-middle">@item.MobileNo</span></text>)                                                                                                                                                                @*grid.Column("IsActive", "Active", style: "sixtypx", format: @<text><input name="Prints" readonly="true" type="checkbox" data-init-plugin="switchery" class="switchery small" checked="@item.IsActive" /></text>),*@
+
+)
+               )
+
+
+
+                    <button type="button" onclick="SendMessge();">Send</button>
+                }
+            </div>
+            @*<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>*@
+
 
         </div>
-        <div class="content">
-            @using (Html.BeginForm("SendMessage", "Notification"))
-            {
-                @*<a class="btn btn-primary" href="../File/AddNEWFile" role="button">Add New Files</a>*@
-                @grid.GetHtml(
-                           htmlAttributes: new { id = "gridList", width = "100%" },
-                           tableStyle: "table table-hover display nowrap",
-                           columns:
-                               grid.Columns
-                                   (
-                                       grid.Column("Chekbox", "Chekbox", format: @<text><input class='chkbox  ckhk' type='checkbox' data-id="@item.Id" onclick="getData(this, event);" /></text>),
-                                       grid.Column("First Name", "", format: @<text><span class="v-align-middle semi-bold">@item.FirstName</span></text>),
-                                       grid.Column("Last Name", "", format: @<text><span class="v-align-middle"> @item.LastName</span></text>),
-                                       grid.Column("Eamil", "", format: @<text><span class="v-align-middle">@item.Email</span></text>),
-                                       grid.Column("Mobile", "", format: @<text><span class="v-align-middle">@item.MobileNo</span></text>)                                                                                                                                                                @*grid.Column("IsActive", "Active", style: "sixtypx", format: @<text><input name="Prints" readonly="true" type="checkbox" data-init-plugin="switchery" class="switchery small" checked="@item.IsActive" /></text>),*@
-
-         )
-                          )
-
-
-
-                <button type="button" onclick="SendMessge();">Send</button>
-            }
-        </div>
-        @*<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>*@
-
-
     </div>
 </div>
-<script>
-    var myList = new Array();
-    function getData(ctl, event)
-    {
 
-        $('.ckhk').click(function()
-        {
-            if ($(this).is(':checked')) {
-                var id = $(ctl).attr('data-id');
-                myList.push(id);
+    <script>
+        var myList = new Array();
+        function getData(ctl, event) {
 
-
-            } else {
-                var id = $(ctl).attr('data-id');
-                myList.splice(myList.indexOf(id), 1);
-            }
-        });
-    }
+            //$('ctl').click(function () {
+                if ($(ctl).is(':checked')) {
+                    var id = $(ctl).attr('data-id');
+                    myList.push(id);
 
 
-
-    function SendMessge()
-    {
-        jQuery.ajaxSettings.traditional = true;
-        var textmsg = document.getElementById("MessageText").value;
-        alert(myList);
-        var arr = ["22"];
-        console.log(myList);
-        $.ajax({
-            type: "GET",
-            url: '../Notification/SendMessagex',
-            data: { a: myList, text: textmsg },
-            contentType: 'application/json; charset=utf-8',
-            datatype: 'html',
-            success: function (result) {
-                alert('Success ');
-            },
-            error: function (result) {
-                alert('Fail ' );
-            }
-        });
-    }
+               }
+                else {
+                    var id = $(ctl).attr('data-id');
+                    myList.splice(myList.indexOf(id), 1);
+                }
+            //});
+        }
 
 
 
+        function SendMessge() {
+            jQuery.ajaxSettings.traditional = true;
+            var textmsg = document.getElementById("MessageText").value;
+            //alert(myList);
+            var arr = ["22"];
+            console.log(myList);
+            $.ajax({
+                type: "GET",
+                url: '../Notification/SendMessagex',
+                data: { a: myList, text: textmsg },
+                contentType: 'application/json; charset=utf-8',
+                datatype: 'html',
+                success: function (result) {
+                    alert('Success ');
+                },
+                error: function (result) {
+                    //alert('Fail ');
+                }
+            });
+        }
 
-</script>
+
+
+
+    </script>
