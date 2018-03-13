@@ -25,7 +25,7 @@ namespace INCOMETAX.Controllers
         {
             using (var db = new DataBaseDataContext())
             {
-                var user = (from u in db.USERs where (u.UserName.Equals(loginuser.Email) || u.Email.Equals(loginuser.Email) && u.Password.Equals(loginuser.Password)&&u.RollId==3) select u).FirstOrDefault();
+                var user = (from u in db.USERs where ((u.UserName.Equals(loginuser.Email) || u.Email.Equals(loginuser.Email)) && u.Password.Equals(loginuser.Password)&&u.RollId==3) select u).FirstOrDefault();
                 if (user != null)
                 {
                     Session["username"] = user.UserName;
@@ -52,7 +52,7 @@ namespace INCOMETAX.Controllers
         {
             using (var db = new DataBaseDataContext())
             {
-                var user = (from u in db.USERs where (u.UserName.Equals(loginuser.Email) || u.Email.Equals(loginuser.Email) && u.Password.Equals(loginuser.Password) && u.RollId == 2) select u).FirstOrDefault();
+                var user = (from u in db.USERs where ((u.UserName.Equals(loginuser.Email) || u.Email.Equals(loginuser.Email)) && u.Password.Equals(loginuser.Password) && u.RollId == 2) select u).FirstOrDefault();
 
                 if (user!=null)
                 {

@@ -113,7 +113,7 @@ namespace INCOMETAX.Controllers
             {
                 try
                 {
-                    var f = db.FILE_DETAILs.Where(m => m.FILE_ID == fileid && m.IS_DELETE != true).FirstOrDefault();
+                    var f = db.FILE_DETAILs.Where(m => m.FILE_ID == fileid).FirstOrDefault();
 
 
                     var nf = new FileDetailModel();

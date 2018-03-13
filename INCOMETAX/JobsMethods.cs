@@ -13,7 +13,7 @@ namespace INCOMETAX
     {
 
 
-        public static void DailyMessagePercentWise()
+        public static bool DailyMessagePercentWise()
         {
             using (var db = new DataBaseDataContext())
             {
@@ -56,7 +56,7 @@ namespace INCOMETAX
 
 
                 }
-
+                return true;
             }
         }
         public static void sendDaily()
