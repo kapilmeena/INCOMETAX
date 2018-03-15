@@ -27,6 +27,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <TypeScriptToolsVersion>2.5</TypeScriptToolsVersion>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -219,6 +220,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\NotificationController.cs" />
     <Compile Include="Controllers\OfficerController.cs" />
+    <Compile Include="Controllers\SettingController.cs" />
     <Compile Include="Controllers\SweetController.cs" />
     <Compile Include="Controllers\UserRegisterController.cs" />
     <Compile Include="DbModel\DataBase.designer.cs">
@@ -450,6 +452,7 @@
     <Content Include="Content\bootstrap-reboot.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-3.0.0-vsdoc.js" />
     <Content Include="Scripts\jquery-3.0.0.js" />
     <Content Include="Scripts\jquery-3.0.0.min.js" />
@@ -544,6 +547,8 @@
     <Content Include="Views\Officer\showAllOperator.cshtml" />
     <Content Include="Views\Notification\SendMessage.cshtml" />
     <Content Include="Views\Notification\ShowMessage.cshtml" />
+    <Content Include="Views\Setting\EditOfficerDetails.cshtml" />
+    <Content Include="Views\Setting\Profiles.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

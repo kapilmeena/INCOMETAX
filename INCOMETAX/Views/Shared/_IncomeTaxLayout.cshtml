@@ -44,7 +44,7 @@
 </head>
 <body>
     <div class="wrapper">
-     <div class="sidebar" data-color="red" data-image="../Content/Resource/images/sidebar-5.jpg" id="sidebarLayout">
+        <div class="sidebar" data-color="red" data-image="../Content/Resource/images/sidebar-5.jpg" id="sidebarLayout">
             <!--
 
                 Tip 1: you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple"
@@ -93,6 +93,15 @@
                                 <p>Instant Messages</p>
                             </a>
                         </li>
+                        <li class="logo">
+
+                        </li>
+                        <li>
+                            <a href="../setting/Profiles">
+                                <i class="pe-7s-settings"></i>
+                                <p>Settings</p>
+                            </a>
+                        </li>
                     }
                     @if (@Session["Role"].ToString() == "2")
                     {
@@ -115,7 +124,15 @@
                                 <p>Officers</p>
                             </a>
                         </li>
+                        <li class="logo">
 
+                        </li>
+                        <li>
+                            <a href="../Officer/GetOfficerDetails">
+                                <i class="pe-7s-settings"></i>
+                                <p>Settings</p>
+                            </a>
+                        </li>
 
 
                     }
@@ -133,20 +150,20 @@
                                 <p>Messages</p>
                             </a>
                         </li>
+                        <li class="logo">
 
-
+                        </li>
+                        <li>
+                            <a href="../Officer/GetOfficerDetails">
+                                <i class="pe-7s-settings"></i>
+                                <p>Settings</p>
+                            </a>
+                        </li>
 
                     }
-                   
-                    <li class="logo">
 
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="pe-7s-settings"></i>
-                            <p>Settings</p>
-                        </a>
-                    </li>
+
+
                     <li>
                         <a href="../Login/Logout">
                             <i class="pe-7s-news-paper"></i>
@@ -167,13 +184,13 @@
                             <span class="icon-bar"></span>
                         </button>
                         @if (@Session["Role"].ToString() == "1")
-                        {  <a class="navbar-brand" href="#">Admin Dashboard</a>
+                        {<a class="navbar-brand" href="#">Admin Dashboard</a>
                         }
                         @if (@Session["Role"].ToString() == "2")
-                        {  <a class="navbar-brand" href="#">Operator Dashboard</a>
+                        {<a class="navbar-brand" href="#">Operator Dashboard</a>
                         }
                         @if (@Session["Role"].ToString() == "3")
-                        {  <a class="navbar-brand" href="#">Officer Dashboard</a>
+                        {<a class="navbar-brand" href="#">Officer Dashboard</a>
                         }
 
                     </div>
@@ -296,7 +313,8 @@
     <script src="~/Content/Resource/js/chartist.min.js"></script>
     <!--  Notifications Plugin    -->
     <script src="~/Content/Resource/js/bootstrap-notify.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.quicksearch/2.4.0/jquery.quicksearch.js"></script>
+ 
     <!--  Google Maps Plugin    -->
     @*<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>*@
     <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
@@ -312,7 +330,7 @@
 
             </script>*@
     }
-    @*@RenderSection("scriptsection")*@
+    @RenderSection("scriptsection", false)
     <script type="text/javascript">
 
 
@@ -383,7 +401,7 @@
             document.getElementById("sidebarLayout").setAttribute("data-color", "green")
         }
     </script>
-    
+
 </body>
 
 </html>

@@ -1,0 +1,96 @@
+﻿@model INCOMETAX.Models.UserModel
+
+@{
+    ViewBag.Title = "Profiles";
+    Layout = "~/Views/Shared/_IncomeTaxLayout.cshtml";
+    var grid = new WebGrid(ViewBag.AllOfficer);
+}
+
+
+<div class="row">
+    <div class="card">
+        <div class="header">
+            <input type="text" id="search" placeholder="Search here">
+        </div>
+        <div class="content">
+            @*<a class="btn btn-primary" href="../File/AddNEWFile" role="button">Add New Files</a>*@
+            @grid.GetHtml(
+                                        htmlAttributes: new { id = "gridList", width = "100%" },
+                                        tableStyle: "table table-hover display nowrap",
+                                        columns:
+                                            grid.Columns
+                                                (
+                                                    grid.Column("First Name", "", format: @<text><span class="v-align-middle semi-bold">@item.FirstName</span></text>),
+                                                  grid.Column("Last Name", "", format: @<text><span class="v-align-middle"> @item.LastName</span></text>),
+                                                  grid.Column("Eamil", "", format: @<text><span class="v-align-middle">@item.Email</span></text>),
+                                                 grid.Column("Mobile", "", format: @<text><span class="v-align-middle">@item.MobileNo</span></text>),
+                //grid.Column("Pending", "", format: @<text><span class="v-align-middle">@item.IS_PENDING</span></text>),
+                //grid.Column("Assigned", "", format: @<text><span class="v-align-middle">@item.IS_ASSIGN</span></text>)
+                //grid.Column("Assigned", "", format: @<text><label class="switch"><input type="checkbox" checked="@item.IS_PENDING" /><span class="slider round"></span></label></text>)
+                @*grid.Column("IsActive", "Active", style: "sixtypx", format: @<text><input name="Prints" readonly="true" type="checkbox" data-init-plugin="switchery" class="switchery small" checked="@item.IsActive" /></text>),*@
+                @*grid.Column("", "ACTION", format: @<text>
+                    @*grid.Column("IsActive", "Active", style: "sixtypx", format: @<text><input name="Prints" readonly="true" type="checkbox" data-init-plugin="switchery" class="switchery small" checked="@item.IsActive" /></text>),*@
+                grid.Column("", "ACTION", format: @<text>
+                    <div class="btn-group sm-m-t-10">
+                        <a href="javascript:void(0);" data-id="@item.ID " onclick="getData(this, event);" class="btn btn-default">
+                            EDIT
+                            <i class="fa fa-pencil"></i>
+                        </a>
+                        @*<a href="@Url.Action("DeleteFile", "File", new {fileid = item.id}, null)" onclick="return deletealert(this, event);" class="btn btn-default">
+                                <i class="fa fa-trash-o"></i>
+                            </a>*@
+
+                    </div></text>))
+                 )
+
+
+
+
+
+
+        </div>
+        @*<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>*@
+
+    </div>
+</div>
+@*<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>*@
+
+<script>
+    function getData(ctl, eve) {
+        var teamDetailPostBackUrl = '/Setting/EditOfficerDetails';
+        var id = $(ctl).attr('data-id');
+        $.ajax({
+            type: "GET",
+            url: teamDetailPostBackUrl,
+            contentType: "application/json; charset=utf-8",
+            datatype: "html",
+            data: { "uid": id },
+            success: function (data) {
+                //alert("success");
+                $('#detailsModel').html(data);
+                //$('#myModal').modal(options);
+                $('#detailsModel').modal('show');
+                //$("#formDetails").validate();
+
+            },
+            error: function () {
+                alert("Dynamic content load failed.");
+            }
+        });
+    }
+</script>
+
+
+
+
+@section scriptsection
+{
+    <script >
+        $('input#search').quicksearch('table tbody tr');
+      
+            $('#id_search').quicksearch('#gridList tbody tr');
+       
+    </script>
+    }
+
+

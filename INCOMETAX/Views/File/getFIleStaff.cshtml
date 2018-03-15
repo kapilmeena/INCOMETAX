@@ -10,36 +10,36 @@
 <div class="row">
     <div class="card">
         <div class="header">
-
+            <input type="text" id="search" placeholder="Search here">
         </div>
         <div class="content">
             @*<a class="btn btn-primary" href="../File/AddNEWFile" role="button">Add New Files</a>*@
             @grid.GetHtml(
-                         htmlAttributes: new { id = "gridList", width = "100%" },
+                              htmlAttributes: new {id = "gridList", width = "100%"},
                          tableStyle: "table table-hover display nowrap",
                          columns:
                              grid.Columns
                                  (
-                                     grid.Column("File Name", "", format: @<text><span class="v-align-middle semi-bold">@item.FILE_NAME</span></text>),
-                                     grid.Column("Time", "", format: @<text><span class="v-align-middle"> @item.COMPLETE_IN_DAYS</span></text>),
-                                     grid.Column("Assigned on", "", format: @<text><span class="v-align-middle">@item.ASSIGN_DATE.ToString("dd/MM/yyyy")</span></text>),
-                                     grid.Column("Pending", "", format: @<text><label class="switch"><input type="checkbox" checked="@item.IS_PENDING" disabled /><span class="slider round"></span></label></text>),
-                                     grid.Column("Completed", "", format: @<text><label class="switch"><input type="checkbox" data-id=@item.FILE_ID checked="@item.IS_COMPLETED"  onchange="ChangeToComplete('@item.FILE_ID');";><span class="slider round"></span></label></text>)
-                                     //grid.Column("Pending", "", format: @<text><span class="v-align-middle">@item.IS_PENDING</span></text>),
-                                     //grid.Column("Assigned", "", format: @<text><span class="v-align-middle">@item.IS_ASSIGN</span></text>)
-                                     @*grid.Column("IsActive", "Active", style: "sixtypx", format: @<text><input name="Prints" readonly="true" type="checkbox" data-init-plugin="switchery" class="switchery small" checked="@item.IsActive" /></text>),*@
+                                    grid.Column("File Name", "", format: @<text><span class="v-align-middle semi-bold">@item.FILE_NAME</span></text>),
+                                    grid.Column("Time", "", format: @<text><span class="v-align-middle"> @item.COMPLETE_IN_DAYS</span></text>),
+                                    grid.Column("Assigned on", "", format: @<text><span class="v-align-middle">@item.ASSIGN_DATE.ToString("dd/MM/yyyy")</span></text>),
+                                    grid.Column("Pending", "", format: @<text><label class="switch"><input type="checkbox" checked="@item.IS_PENDING" disabled /><span class="slider round"></span></label></text>),
+                                    grid.Column("Completed", "", format: @<text><label class="switch"><input type="checkbox" data-id=@item.FILE_ID checked="@item.IS_COMPLETED" onchange="ChangeToComplete('@item.FILE_ID');" ;><span class="slider round"></span></label></text>)
+                                    //grid.Column("Pending", "", format: @<text><span class="v-align-middle">@item.IS_PENDING</span></text>),
+                                    //grid.Column("Assigned", "", format: @<text><span class="v-align-middle">@item.IS_ASSIGN</span></text>)
+                                    @*grid.Column("IsActive", "Active", style: "sixtypx", format: @<text><input name="Prints" readonly="true" type="checkbox" data-init-plugin="switchery" class="switchery small" checked="@item.IsActive" /></text>),*@
                                     @*grid.Column("", "ACTION", format: @<text>
-                                        <div class="btn-group sm-m-t-10">
-                                            <a href="javascript:void(0);" data-id="@item.FILE_ID " onclick="getData(this, event);" class="btn btn-default">
-                                                <i class="fa fa-pencil"></i>
-                                            </a>
-                                            <a href="@Url.Action("DeleteFile", "File", new {fileid = item.FILE_ID}, null)" onclick="return deletealert(this, event);" class="btn btn-default">
-                                                <i class="fa fa-trash-o"></i>
-                                            </a>
+                                    <div class="btn-group sm-m-t-10">
+                                        <a href="javascript:void(0);" data-id="@item.FILE_ID " onclick="getData(this, event);" class="btn btn-default">
+                                            <i class="fa fa-pencil"></i>
+                                        </a>
+                                        <a href="@Url.Action("DeleteFile", "File", new {fileid = item.FILE_ID}, null)" onclick="return deletealert(this, event);" class="btn btn-default">
+                                            <i class="fa fa-trash-o"></i>
+                                        </a>
 
-                                        </div></text>))*@
-    )
-                        )
+                                    </div></text>))*@
+                                    )
+                                                        )
 
 
 
@@ -73,8 +73,16 @@
         });
     }
 
-    </script>
+</script>
+@section scriptsection
+{
+    <script>
+        $('input#search').quicksearch('table tbody tr');
 
+        $('#id_search').quicksearch('#gridList tbody tr');
+
+    </script>
+}
 
 
 
